@@ -6,6 +6,7 @@
 var CreateTable="CREATE TABLE IF NOT EXISTS preference(id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT, place TEXT)";
 var SelectAll="SELECT * FROM preference";
 var Insert="INSERT INTO preference(name, place) values(?, ?)";
+var update="UPDATE preference set name=?,place=? where id=?";
 
 if(window.openDatabase)var db=openDatabase("WilgoDB","1.0","test",20000);
 else alert("no se pudo crear la bd");
@@ -29,5 +30,12 @@ else alert("no se pudo crear la bd");
 		          tx.executeSql(Insert, [name, place]);
 		        });
 		      }
+		   function updateFill(id){
+			db.transaction(function(tx){
+			var name=document.getElementById('name').value;
+			var place=document.getElementById('place').value;
+				tx.executeSql(update,[name,place,id]);
+			});
+		}
 
 		 
