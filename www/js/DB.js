@@ -22,6 +22,7 @@ else alert("no se pudo crear la bd");
 				tx.executeSql(CreateTable,[]);
 			});
 		}
+
 		 function insert() {
 		 	var name=document.getElementById('name').value;
 			var place=document.getElementById('place').value;
@@ -31,6 +32,7 @@ else alert("no se pudo crear la bd");
 		          tx.executeSql(Insert, [name, place]);
 		        });
 		      }
+
 		   function updateFill(id){
 			db.transaction(function(tx){
 			var name=document.getElementById('name').value;
@@ -38,10 +40,31 @@ else alert("no se pudo crear la bd");
 				tx.executeSql(update,[name,place,id]);
 			});
 		}
+
 		function deleteFill(id){
 			db.transaction(function(tx){
 				tx.executeSql(deletef,[id]);
 			});
+		}
+
+			/**
+			callback is a Function with the signature:
+			callback(elements)
+			*/
+			function read(column,callback){
+
+				db.transaction(function(tx){
+					tx.executeSql(SelectAll,[],function(tx,result){
+					var row=result.rows;
+					for(var i=0, item=null; i<row.length;i++){
+						item=row.item(i);
+						element.push(item[column]);
+					}
+					callback(element);
+				});
+			});
+				
+			
 		}
 
 		 
