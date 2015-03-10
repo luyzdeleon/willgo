@@ -32,24 +32,27 @@ function createTable() {
 
 // {key:value}
 // cb: callback function(tx, result)
-function insert(table_name, fields, cb) {
-  var keys = Object.keys(fields),
-      columns = keys.join(','),
-      values = [],
-      statement = '',
-      wildcards = [];
+			function insert(table_name, fields, cb) {
+			  
+			  	var keys = Object.keys(fields),
+			      columns = keys.join(','),
+			      values = [],
+			      statement = '',
+			      wildcards = [];
 
-  for(key in keys){
-    values.push(fields[key]);
-    wildcards.push('?');
-  }
+			  for(key in fields){
+			    values.push(fields[key]);
+			    wildcards.push('?');
+			  }
 
-  wildcards = wildcards.join(',');
-  statement = INSERT.format({'columns': columns, 'wildcards': wildcards, 'table': table_name});
+			  wildcards = wildcards.join(',');
+			  statement = INSERT.format({'columns': columns, 'wildcards': wildcards, 'table': table_name});
 
-  db.transaction(function(tx) {
-    tx.executeSql(insert, values, cb);
-  });
+
+			  db.transaction(function(tx) {
+			  	
+			    tx.executeSql(statement, values,cb);
+			  });
 }
 
 function updateFill(id) {
