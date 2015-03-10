@@ -12,7 +12,7 @@ var CreateTable = "CREATE TABLE IF NOT EXISTS preference(id INTEGER PRIMARY KEY 
 var SELECT="SELECT {columns} FROM {table}";
 var INSERT = "INSERT INTO {table}({columns}) values({wildcards})";
 var update = "UPDATE preference set name=?,place=? where id=?";
-var deletef = "DELETE from preference where id=?";
+//var deletef = "DELETE from preference where id=?";
 
 if (window.openDatabase) {
   var db = openDatabase("WilgoDB", "1.0", "test", 20000);
@@ -63,12 +63,31 @@ createTable();
 			    tx.executeSql(update, [name, place, id]);
 			  });
 			}
+			/*------>REVISA ESTE<---------*/
+			function deleteFill(table_name, fields, cb) {
+			  
+			  	var keys = Object.keys(fields),
+			      values = [],
+			      statement = '';
+			     statement = 'DELETE FROM '+table_name+' WHERE ';
+			     
+				  for(key in fields){
+				    values=fields[key];
+					statement+=key;
+					statement+="=";
+					statement+="'";
+					statement+=values;
+					statement+="'";
+					statement+=" AND ";
+				  }
+				  statement=statement.slice(0,statement.length-4);
 
-			function deleteFill(id) {
-			  db.transaction(function(tx) {
-			    tx.executeSql(deletef, [id]);
+				  db.transaction(function(tx) {
+				  	
+				    tx.executeSql(statement,cb);
+				   
 			  });
-			}
+}
 
 			/**
 			{key:value}
