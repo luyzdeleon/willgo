@@ -4,7 +4,7 @@ var willGoMap = {
   marker: null,
   mapProperty: {
     center: new google.maps.LatLng(18.49333, -69.86867),
-    zoom: 14,
+    zoom: 11,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   },
   latlong: '',
