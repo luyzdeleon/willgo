@@ -28,7 +28,7 @@ createTable();
 
 
 var DBLayer = {
-  // {key:value}
+  // fields {key:value}
   // cb: callback function(tx, result)
   insert: function(table_name, fields, cb) {
 
@@ -52,7 +52,6 @@ var DBLayer = {
 
 
       db.transaction(function(tx) {
-
         tx.executeSql(statement, values, cb);
       });
   },
