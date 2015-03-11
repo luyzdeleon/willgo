@@ -7,34 +7,39 @@ willGoMap.cbFn = function(latlong, geocodedInfo){
    document.getElementsByName("address")[0].value = geocodedInfo.address;
  }
 
-function getModel(){
-  return {
-    name: document.getElementsByName("name")[0].value,
-    country: document.getElementsByName("country")[0].value,
-    address: document.getElementsByName("address")[0].value,
-    latlong: document.getElementsByName("latlong")[0].value
-  }
-}
+ function getModel(){
+   return {
+     name: document.getElementsByName("name")[0].value,
+     country: document.getElementsByName("country")[0].value,
+     address: document.getElementsByName("address")[0].value,
+     latlong: document.getElementsByName("latlong")[0].value
+   }
+ }
 
+ function cancelForm(){
+   document.getElementsByName("name")[0].value = '';
+   document.getElementsByName("country")[0].value = '';
+   document.getElementsByName("address")[0].value = '';
+   document.getElementsByName("latlong")[0].value = '';
+ }
 
+ function saveCallback(){
+   console.log(arguments);
+   console.log('Saved successfully!');
+   alert('Salvado exitosamente');
+   cancelForm();
+ }
 
-function cancelForm(){
-  document.getElementsByName("name")[0].value = '';
-  document.getElementsByName("country")[0].value = '';
-  document.getElementsByName("address")[0].value = '';
-  document.getElementsByName("latlong")[0].value = '';
-}
+ function saveForm(){
+   var model = getModel(),
+       tableName = 'preference';
 
-function saveCallback(){
-  console.log(arguments);
-  console.log('Saved successfully!');
-  alert('Salvado exitosamente');
-  cancelForm();
-}
+   console.log(model);
+   DBLayer.insert(tableName, model, saveCallback);
+ }
 
-function saveForm(){
-  var model = getModel(),
-      tableName = 'preference';
-
-  DBLayer.insert(tableName, model, saveCallback);
+window.onload = function(){
+  console.log('Document is ready');
+  //Initialize map object
+  willGoMap.initialize();
 }

@@ -1,41 +1,73 @@
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="format-detection" content="telephone=no" />
-		<meta name="msapplication-tap-highlight" content="no" />
-		<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 
-		<meta charset="utf-8" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
+  <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 
-    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta charset="utf-8" />
 
-		<!-- Commons functionality -->
-		<script src="js/commons.js"></script>
+  <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
-    <!-- Include the compiled Ratchet CSS -->
-    <link href="css/ratchet.css" rel="stylesheet" />
-		<link href="css/ratchet-theme-android.css" rel="stylesheet" />
+  <script type="text/javascript" src="cordova.js"></script>
+  <!-- Commons functionality -->
+  <script src="js/commons.js"></script>
 
-    <!-- Include the compiled Ratchet JS -->
-    <script src="js/ratchet.js"></script>
-		<title>WillGo</title>
+  <!-- DB Layer -->
+  <script src="js/DB.js"></script>
 
-	</head>
-	<body>
-	   <div class="bar bar-nav">
-         <h1 class="title">WillGo</h1>
-      </div><br><br><br>
-       <div><h3> Interés</h3></div>
+  <script src="js/snap.min.js"></script>
 
-		<div>
-			<ul class="table-view" id="interest-list">
-      </ul>
-		</div>
+  <!-- Include the compiled Ratchet CSS -->
+  <link href="css/ratchet.css" rel="stylesheet" />
+  <link href="css/ratchet-theme-android.css" rel="stylesheet" />
 
-		<!-- Commons functionality -->
-		<script src="js/list.js"></script>
-	</body>
+  <!-- Include the compiled Ratchet JS -->
+  <script src="js/ratchet.js"></script>
+  <title>WillGo</title>
+</head>
+
+<body>
+  <header class="bar bar-nav">
+    <a class="icon icon-bars pull-left" href="#myModalexample"></a>
+    <h1 class="title">WillGo</h1>
+  </header>
+  <div style="overflow:auto;">
+    <ul class="table-view" id="interest-list" style="margin-top: 50px;">
+    </ul>
+  </div>
+  <div id="empty-placeholder" style="width: 100%;">
+  </div>
+  <!-- Side menu modal -->
+  <div id="myModalexample" class="modal">
+    <header class="bar bar-nav">
+      <a class="icon icon-close pull-right" href="#myModalexample"></a>
+      <h1 class="title">Menu</h1>
+    </header>
+
+    <ul class="table-view" style="margin-top:50px;">
+			<li class="table-view-cell">
+				<a class="navigate-right" onclick="window.location='add.html';">
+					Agregar Interes
+				</a>
+			</li>
+			<li class="table-view-cell">
+				<a class="navigate-right" onclick="window.location='list.html';">
+					Ver Intereses
+				</a>
+			</li>
+			<li class="table-view-cell">
+				<a class="navigate-right" onclick="navigator.app.exitApp();">
+					Salir
+				</a>
+			</li>
+		</ul>
+  </div>
+  <!-- list functionality -->
+  <script src="js/list.js"></script>
+</body>
 </html>

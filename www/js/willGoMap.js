@@ -7,11 +7,12 @@ var willGoMap = {
     zoom: 14,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   },
-  latlong: 'test',
-  geocodedInfo: 'test',
+  latlong: '',
+  geocodedInfo: '',
 	//Callback function used to return the values gotten from the map latlong and geocoded info
   cbFn: function() {},
   initialize: function() {
+    console.log('Initializing');
 
     //determino el contenedor en caso de que no se haya hecho
     willGoMap.container = (willGoMap.container) ? document.getElementById(willGoMap.container) : document.body;

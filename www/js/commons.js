@@ -1,3 +1,4 @@
+console.log('loading commons');
 String.prototype.format = function(o) {
   return this.replace(/{([^{}]*)}/g,
     function(a, b) {
