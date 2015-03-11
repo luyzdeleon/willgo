@@ -12,54 +12,30 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
+		<!-- Commons functionality -->
+		<script src="js/commons.js"></script>
+
     <!-- Include the compiled Ratchet CSS -->
     <link href="css/ratchet.css" rel="stylesheet" />
+		<link href="css/ratchet-theme-android.css" rel="stylesheet" />
 
     <!-- Include the compiled Ratchet JS -->
     <script src="js/ratchet.js"></script>
 		<title>WillGo</title>
-		
+
 	</head>
 	<body>
 	   <div class="bar bar-nav">
          <h1 class="title">WillGo</h1>
       </div><br><br><br>
        <div><h3> Interés</h3></div>
-       
-		<div><ul class="table-view">
-        <li class="table-view-cell media">
-          <a class="navigate-right">
-            <span class="media-object pull-left icon icon-pages"></span>
-            <div class="media-body">
-              Interés1
-            </div>
-            <div>
-               Direccion
-            </div>
-          </a>
-        </li>
-        <li class="table-view-cell media">
-          <a class="navigate-right">
-            <span class="media-object pull-left icon icon-pages"></span>
-            <div class="media-body">
-              Interés2
-            </div>
-            <div>
-               Direccion
-            </div>
-          </a>
-        </li><li class="table-view-cell media">
-          <a class="navigate-right">
-            <span class="media-object pull-left icon icon-pages"></span>
-            <div class="media-body">
-              Interés3
-            </div>
-            <div>
-               Direccion
-            </div>
-          </a>
-        </li>
-      </ul></div>
-      
+
+		<div>
+			<ul class="table-view" id="interest-list">
+      </ul>
+		</div>
+
+		<!-- Commons functionality -->
+		<script src="js/list.js"></script>
 	</body>
 </html>

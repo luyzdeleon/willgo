@@ -1,13 +1,4 @@
 // Dependency to the DB Layer
-String.prototype.format = function(o) {
-  return this.replace(/{([^{}]*)}/g,
-    function(a, b) {
-      var r = o[b];
-      return typeof r === 'string' || typeof r === 'number' ? r : a;
-    }
-  );
-};
-
 var CreateTable = "CREATE TABLE IF NOT EXISTS preference(id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT, country TEXT, address TEXT, latlong TEXT)";
 var SELECT = "SELECT {columns} FROM {table}";
 var INSERT = "INSERT INTO {table}({columns}) values({wildcards})";
