@@ -58,6 +58,7 @@ var willGoMap = {
 
   },
   goThere: function(lat, lng){
+    document.getElementsByClassName("returnPositionWhenClick").className = "";
     var position = new google.maps.LatLng(parseFloat(lat).toFixed(6),parseFloat(lng).toFixed(6));
     willGoMap.map.setCenter(position)
                 
