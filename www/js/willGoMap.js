@@ -30,6 +30,12 @@ var willGoMap = {
     //si se agrega la clase de returnPositionWhenClick al mapa
     if (document.getElementsByClassName("returnPositionWhenClick").length > 0)
       google.maps.event.addDomListener(willGoMap.map, "click", willGoMap.returnPositionWhenClick);
+      
+      
+    //si se agrega la clase de returnPositionWhenClick al mapa
+    // if (document.getElementsByClassName("goThere").length > 0)
+    //   google.maps.event.addDomListener(willGoMap.map, "click", willGoMap.goThere);
+      
   },
   returnPositionWhenClick: function(event) {
 // 		console.log(event.latLng);
@@ -50,6 +56,22 @@ var willGoMap = {
     willGoMap.geocodePosition(willGoMap.marker.getPosition());
 		//Callback with (latlong, geocodedInfo)
 
+  },
+  goThere: function(lat, lng){
+    var position = new google.maps.LatLng(parseFloat(lat).toFixed(6),parseFloat(lng).toFixed(6));
+    willGoMap.map.setCenter(position)
+                
+                //si existe el marker, lo borra y lo vuelve a crear en la nueva position
+    if (willGoMap.marker) {
+      willGoMap.marker.setMap(null)
+      willGoMap.marker.setVisible(false);
+    }
+
+    willGoMap.marker = new google.maps.Marker({
+      position: position,
+      map: willGoMap.map,
+    });
+                // console.log(" "+new google.maps.LatLng(parseFloat(lat).toFixed(6),parseFloat(lng).toFixed(6)));
   },
   geocodePosition: function(position) {
 		willGoMap.geocodedInfo = '';

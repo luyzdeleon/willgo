@@ -1,0 +1,54 @@
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="msapplication-tap-highlight" content="no" />
+		<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+		<meta charset="utf-8" />
+
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+		<!-- Commons functionality -->
+		<script src="js/commons.js"></script>
+
+		<!-- Include the compiled Ratchet CSS -->
+    <link href="css/ratchet.css" rel="stylesheet" />
+		<link href="css/ratchet-theme-android.css" rel="stylesheet" />
+
+		<!-- Include the compiled Ratchet JS -->
+    <script src="js/ratchet.js"></script>
+
+		<!-- DB Layer -->
+		<script src="js/DB.js"></script>
+
+    <!-- Libreria de Google Maps-->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js??key=AIzaSyCveZZ8oROeyWKCIoCW7UiPLWfw3sakaDQ&sensor=true"></script>
+
+    <!-- agregar mapa funciones -->
+    <script src="js/willGoMap.js"></script>
+
+		<!-- Funcionalidad para grabar intereses desde el form -->
+		<script src="js/add.js"></script>
+
+		<title>WillGo</title>
+	</head>
+	<body>
+    <header class="bar bar-nav">
+			<a class="icon icon-left-nav pull-left" onclick="window.location='list.html';"></a>
+      <h1 class="title">WillGo</h1>
+    </header>
+		<section style="margin-top: 50px;">
+	    <form>
+	      <input type="text" placeholder="Interes" name="name"/>
+	      <input type="text" placeholder="Lugar (Pais)" name="country" disabled/>
+				<input type="text" placeholder="Ubicacion (Direccion)" name="address" disabled/>
+				<input type="hidden" name="latlong"/>
+				<div id="MapContainer" class="goThere" style="height:100px; width:100%; backgroud:grey;"></div>
+	    </form>
+		</section>
+	</body>
+</html>
