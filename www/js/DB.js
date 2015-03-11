@@ -11,8 +11,6 @@ String.prototype.format = function (o) {
 var CreateTable = "CREATE TABLE IF NOT EXISTS preference(id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT, place TEXT)";
 var SELECT="SELECT {columns} FROM {table}";
 var INSERT = "INSERT INTO {table}({columns}) values({wildcards})";
-var update = "UPDATE preference set name=?,place=? where id=?";
-//var deletef = "DELETE from preference where id=?";
 
 if (window.openDatabase) {
   var db = openDatabase("WilgoDB", "1.0", "test", 20000);
@@ -56,14 +54,43 @@ createTable();
 			  });
 
 
-			function updateFill(id) {
-			  db.transaction(function(tx) {
-			    var name = document.getElementById('name').value;
-			    var place = document.getElementById('place').value;
-			    tx.executeSql(update, [name, place, id]);
+			function updatefills(table_name, old_fields,new_fields, cb) {
+			  
+			  	var keys = Object.keys(new_fields),
+			      values = [],
+			      statement = '';
+			     statement = 'UPDATE '+table_name+' set ';
+			     
+				  for(key in new_fields){
+				    values=new_fields[key];
+					statement+=key;
+					statement+="=";
+					statement+="'";
+					statement+=values;
+					statement+="'";
+					statement+=", ";
+				  }
+				  statement=statement.slice(0,statement.length-2);
+				  statement+=' WHERE ';
+				  keys=Object.keys(old_fields);
+				  for(key in old_fields){
+				  	values=old_fields[key];
+				  	statement+=key;
+				  	statement+="=";
+				  	statement+="'";
+				  	statement+=values;
+				  	statement+="'";
+				  	statement+=' AND ';
+				  }
+
+				  statement=statement.slice(0,statement.length-4);
+				  db.transaction(function(tx) {
+				  	
+				    tx.executeSql(statement,cb);
+				   
 			  });
-			}
-			/*------>REVISA ESTE<---------*/
+}
+			
 			function deleteFill(table_name, fields, cb) {
 			  
 			  	var keys = Object.keys(fields),
