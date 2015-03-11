@@ -32,7 +32,7 @@ createTable();
 			// {key:value}
 			// cb: callback function(tx, result)
 			function insert(table_name, fields, cb) {
-			  
+
 			  	var keys = Object.keys(fields),
 			      columns = keys.join(','),
 			      values = [],
@@ -49,18 +49,18 @@ createTable();
 
 
 			  db.transaction(function(tx) {
-			  	
+
 			    tx.executeSql(statement, values,cb);
 			  });
 
 			 //table name, old fields, new fields and callback
 			function updatefills(table_name, old_fields,new_fields, cb) {
-			  
+
 			  	var keys = Object.keys(new_fields),
 			      values = [],
 			      statement = '';
 			     statement = 'UPDATE '+table_name+' set ';
-			     
+
 				  for(key in new_fields){
 				    values=new_fields[key];
 					statement+=key;
@@ -85,19 +85,19 @@ createTable();
 
 				  statement=statement.slice(0,statement.length-4);
 				  db.transaction(function(tx) {
-				  	
+
 				    tx.executeSql(statement,cb);
-				   
+
 			  });
 }
-			
+
 			function deleteFill(table_name, fields, cb) {
-			  
+
 			  	var keys = Object.keys(fields),
 			      values = [],
 			      statement = '';
 			     statement = 'DELETE FROM '+table_name+' WHERE ';
-			     
+
 				  for(key in fields){
 				    values=fields[key];
 					statement+=key;
@@ -110,9 +110,9 @@ createTable();
 				  statement=statement.slice(0,statement.length-4);
 
 				  db.transaction(function(tx) {
-				  	
+
 				    tx.executeSql(statement,cb);
-				   
+
 			  });
 }
 
@@ -127,7 +127,7 @@ createTable();
 			      columns = keys.join(','),
 			      statement = '',
 			      elements=[];
-	
+
 				  statement = SELECT.format({'columns': columns, 'table': table_name});
 
 				db.transaction(function(tx){
@@ -140,5 +140,5 @@ createTable();
 					callback(elements);
 				});
 			});
-				
+
 		}
