@@ -17,6 +17,13 @@
 
     <!-- Include the compiled Ratchet JS -->
     <script src="js/ratchet.js"></script>
+    
+    <!-- Libreria de Google Maps-->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js??key=AIzaSyCveZZ8oROeyWKCIoCW7UiPLWfw3sakaDQ&sensor=true"></script>
+    
+    <!-- agregar mapa funciones -->
+    <script src="js/willGoMap.js"></script>
+    
 		<title>WillGo</title>
 	</head>
 	<body>
@@ -30,5 +37,10 @@
       <button class="btn btn-positive btn-block">Guardar</button>
       <button class="btn btn-negative btn-block">Cancelar</button>
     </form>
+    
+    <section><div id="ClickAddress">Click address...</div>
+      <div id="MapContainer" class="returnPositionWhenClick" style="height:100%; width:100%; backgroud:grey;"></div>
+    </section>
+    
 	</body>
 </html>
