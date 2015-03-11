@@ -71,7 +71,6 @@ var willGoMap = {
       position: position,
       map: willGoMap.map,
     });
-                // console.log(" "+new google.maps.LatLng(parseFloat(lat).toFixed(6),parseFloat(lng).toFixed(6)));
   },
   geocodePosition: function(position) {
 		willGoMap.geocodedInfo = '';

@@ -76,5 +76,12 @@ window.onload = function(){
     document.getElementsByName("latlong")[0].value = object['latlong'];
     document.getElementsByName("country")[0].value = object['country'];
     document.getElementsByName("address")[0].value = object['address'];
+
+    // hide the buttons
+    var buttons = document.getElementsByClassName("btn");
+    //console.error(buttons[0]);
+    for(var i = 0; i < buttons.length; i++){
+      buttons[i].style.display = 'none';
+    }
   }
 }
