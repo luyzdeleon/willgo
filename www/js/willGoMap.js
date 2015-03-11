@@ -59,9 +59,8 @@ var willGoMap = {
    							
    			if(status == google.maps.GeocoderStatus.OK){
    				
-   				for(val of results[0].address_components){
-   				  // console.log(val);//si quiere
-   				   document.getElementById("ClickAddress").innerHTML  += "<b>"+(val.long_name)+",</b> ";
+   				for(var i=0; i<results[0].address_components.length; i++){
+   				   document.getElementById("ClickAddress").innerHTML  += "<b>"+(results[0].address_components[i].long_name)+",</b> ";
    				}
    			}else{
    				document.getElementById("ClickAddress").innerHTML  =("Could not found this posicion: "+status);
