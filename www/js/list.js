@@ -7,7 +7,7 @@ window.onload = function(){
   console.log(snapper);*/
 
   console.log('reached event listener');
-  var itemTpl = '<li class="table-view-cell media"><a class="navigate-right" onclick="window.location=\'add.html?{detailUrl}\'"><span class="media-object pull-left icon icon-pages"></span><div class="media-body">{name}</div><div>{address}</div></a></li>',
+  var itemTpl = '<li class="table-view-cell media"><a class="navigate-right" onclick="window.location=\'add.html?{detailUrl}\'"><span class="media-object pull-left icon icon-pages"></span><div class="media-body">{name} - {id}</div><div>{address}</div></a></li>',
       listContent = '';
 
   var serialize = function(obj) {
@@ -19,6 +19,13 @@ window.onload = function(){
     return str.join("&");
   }
 
+  function compareInterests(a,b) {
+    if (a.id < b.id)
+       return 1;
+    if (a.id > b.id)
+      return -1;
+    return 0;
+  }
 
   function retrieveCallback(elements, statement){
     console.log('reached callback');
@@ -28,6 +35,7 @@ window.onload = function(){
     listContent = '';
 
     if(elements.length){
+      elements.sort(compareInterests);
       for(index in elements){
         console.log(index);
         var currElement = elements[index];
@@ -39,7 +47,8 @@ window.onload = function(){
           listContent += itemTpl.format({
                     name: currElement['name'],
                     address: currElement['address'],
-                    'detailUrl': detailUrl
+                    'detailUrl': detailUrl,
+                    id: currElement['id']
                   });
         }
       }
