@@ -31,9 +31,9 @@ var willGoMap = {
       google.maps.event.addDomListener(willGoMap.map, "click", willGoMap.returnPositionWhenClick);
   },
   returnPositionWhenClick: function(event) {
-		console.log(event.latLng);
+// 		console.log(event.latLng);
     //willGoMap.latLong = event.latLng[k] + "," + event.latLng[D];
-		console.log(willGoMap.latLong);
+// 		console.log(willGoMap.latLong);
 
     //si existe el marker, lo borra y lo vuelve a crear en la nueva position
     if (willGoMap.marker) {
@@ -48,7 +48,7 @@ var willGoMap = {
 
     willGoMap.geocodePosition(willGoMap.marker.getPosition());
 		//Callback with (latlong, geocodedInfo)
-		willGoMap.cbFn(willGoMap.latlong, willGoMap.geocodedInfo);
+		
   },
   geocodePosition: function(position) {
 		willGoMap.geocodedInfo = '';
@@ -61,13 +61,17 @@ var willGoMap = {
 
         if (status == google.maps.GeocoderStatus.OK) {
 
-          for (var i = 0; i < results[0].address_components.length; i++) {
-						willGoMap.geocodedInfo += results[0].address_components[i].long_name;
-          }
+         willGoMap.geocodedInfo = results[0].address_components;
+         //para mandar la direccion en string
+      //     for (var i = 0; i < results[0].address_components.length; i++) {
+						// willGoMap.geocodedInfo += results[0].address_components[i].long_name;
+      //     }
         } else {
 					willGoMap.geocodedInfo = "No se pudo conseguir la direccion";
         }
 
+         willGoMap.latlong = position;
+         willGoMap.cbFn(willGoMap.latlong, willGoMap.geocodedInfo);
       });
     }
   }
