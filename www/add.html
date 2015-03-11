@@ -33,26 +33,22 @@
 		<title>WillGo</title>
 	</head>
 	<body>
-		<section>
-	    <header class="bar bar-nav">
-	      <h1 class="title">WillGo</h1>
-	    </header>
-		</section>
+    <header class="bar bar-nav">
+			<a class="icon icon-left-nav pull-left" href="menu.html"></a>
+      <h1 class="title">WillGo</h1>
+    </header>
 		<section style="margin-top: 50px;">
 	    <form>
 	      <input type="text" placeholder="Interes" name="name"/>
 	      <input type="text" placeholder="Lugar (Pais)" name="country" disabled/>
 				<input type="text" placeholder="Ubicacion (Direccion)" name="address" disabled/>
 				<input type="hidden" name="latlong"/>
-	      <button class="btn btn-positive btn-block" onclick="saveForm();">Guardar</button>
-	      <button class="btn btn-negative btn-block" onclick="cancelForm();">Cancelar</button>
+				<div id="MapContainer" class="returnPositionWhenClick" style="height:100px; width:100%; backgroud:grey;"></div>
 	    </form>
 		</section>
-
     <section>
-			<div id="ClickAddress">Click address...</div>
-      <div id="MapContainer" class="returnPositionWhenClick" style="height:200px; width:100%; backgroud:grey;"></div>
+			<button class="btn btn-positive btn-block" onclick="saveForm();">Guardar</button>
+			<button class="btn btn-negative btn-block" onclick="cancelForm();">Cancelar</button>
     </section>
-
 	</body>
 </html>

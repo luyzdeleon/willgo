@@ -48,7 +48,7 @@ var willGoMap = {
 
     willGoMap.geocodePosition(willGoMap.marker.getPosition());
 		//Callback with (latlong, geocodedInfo)
-		
+
   },
   geocodePosition: function(position) {
 		willGoMap.geocodedInfo = '';
@@ -61,18 +61,39 @@ var willGoMap = {
 
         if (status == google.maps.GeocoderStatus.OK) {
 
-         willGoMap.geocodedInfo = results[0].address_components;
+         // Return a formated geocodedInfo
+         willGoMap.geocodedInfo = willGoMap.parseAddressComponents(results[0].address_components);
          //para mandar la direccion en string
       //     for (var i = 0; i < results[0].address_components.length; i++) {
 						// willGoMap.geocodedInfo += results[0].address_components[i].long_name;
       //     }
         } else {
-					willGoMap.geocodedInfo = "No se pudo conseguir la direccion";
+					willGoMap.geocodedInfo = {country: "No se pudo conseguir el pais",
+                                    address: "No se pudo conseguir la direccion"};
         }
 
          willGoMap.latlong = position;
          willGoMap.cbFn(willGoMap.latlong, willGoMap.geocodedInfo);
       });
+    }
+  },
+  parseAddressComponents: function(address_components){
+    var country = '',
+        address = '';
+
+    for(index in address_components){
+      var curr_component = address_components[index];
+      console.log(curr_component);
+      if(curr_component['types'] && curr_component['types'].indexOf('country') > -1){
+        country = curr_component['long_name'];
+      }else{
+        address += curr_component['long_name'] + ',';
+      }
+    }
+
+    return {
+      'country': country,
+      'address': address
     }
   }
 }
