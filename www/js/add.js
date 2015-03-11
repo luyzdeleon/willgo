@@ -39,6 +39,7 @@ function saveForm(){
 }
 
 function getParameterByName(name) {
+   console.error(name);
    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
        results = regex.exec(location.search);
@@ -48,9 +49,11 @@ function getParameterByName(name) {
 window.onload = function(){
   console.log('Document is ready');
   //Initialize map object
-  willGoMap.initialize();
+  //willGoMap.initialize();
+  console.log('After initialize');
 
   var mode = getParameterByName('mode');
+  console.error(mode);
   if(mode){
     var object = {
       id: getParameterByName('id'),

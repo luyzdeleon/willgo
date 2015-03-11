@@ -10,9 +10,6 @@ window.onload = function(){
   var itemTpl = '<li class="table-view-cell media"><a class="navigate-right" onclick="window.location=\'add.html?{detailUrl}\'"><span class="media-object pull-left icon icon-pages"></span><div class="media-body">{name}</div><div>{address}</div></a></li>',
       listContent = '';
 
-  //
-  //console.log(itemContainer);
-
   var serialize = function(obj) {
     var str = [];
     for(var p in obj)
