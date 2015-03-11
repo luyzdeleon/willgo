@@ -53,7 +53,7 @@ createTable();
 			    tx.executeSql(statement, values,cb);
 			  });
 
-
+			 //table name, old fields, new fields and callback
 			function updatefills(table_name, old_fields,new_fields, cb) {
 			  
 			  	var keys = Object.keys(new_fields),
